@@ -27,7 +27,9 @@ public abstract class SolutionFinder {
 
     private List<String> readFile() {
         try {
-            return Files.readAllLines(Path.of(getFileName()));
+            final var lines = Files.readAllLines(Path.of(getFileName()));
+            lines.remove(lines.size() - 1);
+            return lines;
         } catch (IOException e) {
             throw new FileNotFoundException(getFileName() + " not found!");
         }
