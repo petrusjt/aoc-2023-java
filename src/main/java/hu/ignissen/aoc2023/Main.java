@@ -6,5 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(new Day1SolutionFinder().findSolution());
+        System.out.println(new Day1SolutionFinder().findPart2Solution());
     }
 }
