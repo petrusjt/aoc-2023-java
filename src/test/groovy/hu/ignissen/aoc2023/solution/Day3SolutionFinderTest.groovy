@@ -6,13 +6,27 @@ class Day3SolutionFinderTest extends Specification {
 
     def 'findSolution works'() {
         given:
-        def solutionFinder = new Day3SolutionFinder()
-        def input = ['1*2']
+        def solutionFinder = Spy(Day3SolutionFinder) {
+            getFileName() >> 'aoc-day-3-test.txt'
+        }
 
         when:
-        def result = solutionFinder.findSolution(input)
+        def result = solutionFinder.findSolution()
 
         then:
-        result == 3
+        result == 4361
+    }
+
+    def 'findPart2Solution works'() {
+        given:
+        def solutionFinder = Spy(Day3SolutionFinder) {
+            getFileName() >> 'aoc-day-3-test.txt'
+        }
+
+        when:
+        def result = solutionFinder.findPart2Solution()
+
+        then:
+        result == 467835
     }
 }

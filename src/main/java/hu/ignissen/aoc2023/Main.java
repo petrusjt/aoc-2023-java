@@ -14,5 +14,6 @@ public class Main {
         System.out.println(new Day2SolutionFinder().findPart2Solution());
         System.out.println();
         System.out.println(new Day3SolutionFinder().findSolution());
+        System.out.println(new Day3SolutionFinder().findPart2Solution());
     }
 }
