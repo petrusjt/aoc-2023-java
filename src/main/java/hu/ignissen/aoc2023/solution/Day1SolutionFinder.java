@@ -41,9 +41,6 @@ public class Day1SolutionFinder extends SolutionFinder {
     protected long findPart2Solution(final List<String> lines) {
         return lines.stream()
                 .map(Day1SolutionFinder::convertWordsToDigit)
-                .map(line -> Arrays.stream(line.split(""))
-                        .filter(StringUtils::isNumeric).toList())
-                .map(digits -> String.format(NUMBER_PATTERN, digits.get(0), digits.get(digits.size() - 1)))
                 .mapToInt(Integer::valueOf)
                 .sum();
     }
@@ -58,7 +55,7 @@ public class Day1SolutionFinder extends SolutionFinder {
             } else {
                 final var substring = line.substring(i, Math.min(i + WINDOW_SIZE, line.length()));
                 for (final var word : keySet) {
-                    if (StringUtils.containsIgnoreCase(substring, word)) {
+                    if (StringUtils.startsWithAny(substring, word)) {
                         result += WORD_TO_DIGIT_MAPPING.get(word);
                         break outer;
                     }
@@ -73,7 +70,7 @@ public class Day1SolutionFinder extends SolutionFinder {
             } else {
                 final var substring = line.substring(i, Math.min(i + WINDOW_SIZE, line.length()));
                 for (final var word : keySet) {
-                    if (StringUtils.containsIgnoreCase(substring, word)) {
+                    if (StringUtils.startsWithAny(substring, word)) {
                         result += WORD_TO_DIGIT_MAPPING.get(word);
                         break outer2;
                     }
